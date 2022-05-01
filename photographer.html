@@ -11,11 +11,29 @@
     <header>
       <a href="/"><img src="assets/images/logo.png" class="logo" alt="Fisheye Home page"/></a>
     </header>
+
     <main id="main">
       <div class="photograph-header">
-        <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
+        <button class="contact_button" onclick="displayModal()" aria-label="Contact Me">Contactez-moi</button>
       </div>
+
+      <section class="media-section">
+
+        <div class="order">
+          <label for="order-by">Trier par</label>
+          <div class="order-by__container">
+            <button id="order-by">Popularité</button>
+            <ul id="order-list">
+              <li class="order-list__border">Popularité</li>
+              <li class="order-list__border">Date</li>
+              <li>Titre</li>
+            </ul>
+          </div>
+        </div>
+
+      </section>
     </main>
+
     <div id="contact_modal">
 			<div class="modal">
 				<header>
@@ -31,7 +49,8 @@
 				</form>
 			</div>
 		</div>
-    <script src="/scripts/utils/contactForm.js"></script>
+    <script src="scripts/factories/Photographer.js"></script>
+    <script src="scripts/utils/contactForm.js"></script>
     <script src="scripts/pages/photographer.js"></script>
   </body>
 </html>

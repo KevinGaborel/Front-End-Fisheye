@@ -45,7 +45,32 @@ function photographerFactory(data) {
         paragraph.appendChild(spanPrice);
         article.appendChild(link);
         article.appendChild(paragraph);
+
         return (article);
-    }
-    return { name, picture, getUserCardDOM }
+    };
+
+    function getUserHeaderDOM() {
+        const paragraphContainer = document.createElement('div');
+
+        const titleName = document.createElement('h1');
+        titleName.textContent = name;
+
+        const paragraph = document.createElement('p');
+        paragraph.textContent = `${city}, ${country}`;
+
+        const spanTagline = document.createElement('span');
+        spanTagline.textContent = tagline;
+
+        const img = document.createElement('img');
+        img.setAttribute('alt', name);
+        img.setAttribute('src', `./assets/photographers/${portrait}`);
+
+        paragraph.appendChild(spanTagline);
+        paragraphContainer.appendChild(titleName);
+        paragraphContainer.appendChild(paragraph);
+
+        return {paragraphContainer, img};
+    };
+
+    return { name, picture, getUserCardDOM, getUserHeaderDOM }
 }
