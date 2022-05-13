@@ -1,9 +1,12 @@
+const bodyElt = document.querySelector('body');
+const modalElt = document.getElementById("contact_modal");
+
 function displayModal() {
-    const modal = document.getElementById("contact_modal");
-	modal.style.display = "block";
+	modalElt.style.display = "block";
+    bodyElt.style.overflowY = 'hidden';
 }
 
 function closeModal() {
-    const modal = document.getElementById("contact_modal");
-    modal.style.display = "none";
+    modalElt.style.display = "none";
+    bodyElt.style.overflowY = 'scroll';
 }

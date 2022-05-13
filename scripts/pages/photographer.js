@@ -20,9 +20,10 @@ async function getPhotographers(id) {
 
 }
 
-async function displayData(photographer, media) {
+async function displayData(photographer, medias) {
     const photographHeaderElt = document.querySelector(".photograph-header");
     const contactBtnElt = photographHeaderElt.querySelector('.contact_button');
+    const mediaContainerElt = document.querySelector('.media-container');
 
     const photographerModel = photographerFactory(photographer);
     const userHeaderDOM = photographerModel.getUserHeaderDOM();
@@ -30,27 +31,56 @@ async function displayData(photographer, media) {
     photographHeaderElt.insertBefore(userHeaderDOM.paragraphContainer, contactBtnElt);
     photographHeaderElt.appendChild(userHeaderDOM.img);
 
-    /*
-    photographers.forEach((photographer) => {
-        const photographerModel = photographerFactory(photographer);
-        const userCardDOM = photographerModel.getUserCardDOM();
-        photographHeaderElt.appendChild(userCardDOM);
+    // On inclut le nom du photographe dans le modal contact.
+    const titleModal = document.querySelector('.modal__title');
+    titleModal.textContent = `${titleModal.textContent + photographer.name}`;
+
+    console.log("c'est les medias", medias);
+
+    medias.forEach((media) => {
+        const mediaModel = mediaFactory(media);
+        const mediaCardDOM = mediaModel.getMediaCardDOM();
+        mediaContainerElt.appendChild(mediaCardDOM);
     });
-    */
+
+
+    const mediaModel = mediaFactory(photographer);
+    const mediaInfoPhotographDOM = mediaModel.getInfoPhotographer(medias);
+
+    console.log(mediaInfoPhotographDOM);
+
+    document.querySelector('main').appendChild(mediaInfoPhotographDOM);
 };
 
 async function init() {
     const params = (new URL(document.location)).searchParams;
     const id = parseInt(params.get('id'));
 
-    const btnBorderByElt = document.getElementById('order-by');
+    const btnOrderByElt = document.getElementById('order-by');
     const orderListElt = document.getElementById('order-list');
 
-    btnBorderByElt.addEventListener('click', () => {
+
+    btnOrderByElt.addEventListener('click', () => {
         orderListElt.style.display = 'block';
     });
 
-    console.log(id);
+    orderListElt.addEventListener('click', (e) => {
+        orderListElt.style.display = 'none';
+
+        const spanElt = document.createElement('span');
+        spanElt.textContent = '>';
+
+        const tabStrBtn = e.target.textContent.split('');
+        const isChevron = tabStrBtn.find(caractere => caractere === '>');
+
+        if (isChevron){
+            btnOrderByElt.textContent = tabStrBtn.slice(0, tabStrBtn.length  - 1).join('');
+        } else{
+            btnOrderByElt.textContent = tabStrBtn.join('');
+        }
+
+        btnOrderByElt.appendChild(spanElt);
+    });
 
     // Récupère les datas des photographes
     const { photographers, media } = await getPhotographers(id);

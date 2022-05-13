@@ -76,27 +76,31 @@
 }
 #order-by{
     height: 3em;
-    padding: 0 10px;
-    width: calc(8em + 40px);
-    text-align: left;
     border: none;
     font-family: "DM Sans", sans-serif;
+    padding: 0 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+#order-by > span{
+    transform: rotateZ(90deg);
 }
 #order-by, #order-list{
-    padding: 0 20px;
     border-radius: 5px;
     font-size: 1em;
     font-weight: 600;
     color: white;
     background-color: #901C1C;
+    width: 9em;
 }
 #order-list{
-    width: 8em;
     position: absolute;
     top: 0;
     margin: 0;
     display: none;
     list-style: none;
+    padding: 0;
 }
 #order-list li{
     height: 3em;
@@ -104,17 +108,86 @@
     justify-content: center;
     flex-direction: column;
     position: relative;
+    padding: 0 20px;
+}
+#order-list li:nth-child(1){
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+#order-list li:nth-child(1) > span{
+    transform: rotateZ(-90deg);
+}
+#order-list li:hover{
+    color: black;
+    background-color: #D3573C;
 }
 .order-list__border::after{
     content: '';
-    width: calc(100% + 20px);
+    width: calc(100% - 20px);
     border-bottom: #FAFAFA solid 1px;
     position: absolute;
     top: 3em;
-    left: -10px;
+    left: 10px;
+}
+
+.media-container{
+    display: flex;
+    flex-wrap: wrap;
+    margin: 100px 0;
+    gap: 40px 80px;
+}
+.media{
+    width: 250px;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+.article-footer{
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    color: #901C1C;
+    width: 250px;
+}
+.article-footer > h3{
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    width: 70%;
+    margin: 0;
+}
+
+
+.price-photograph{
+    background-color: #DB8876;
+    position: fixed;
+    bottom: 0;
+    right: 30px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 300px;
+    height: 50px;
+    font-weight: 600;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    font-size: 1.3em;
+}
+.price-photograph i{
+    margin-left: 5px;
 }
 
 /* fin section media */
+
+#contact_modal{
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    background-color: rgba(0,0,0,0.5);
+    overflow-y: scroll;
+}
 
 .modal {
     border-radius: 5px;
@@ -126,6 +199,9 @@
     justify-content: space-between;
     padding: 35px;
     margin: auto;
+    position: absolute;
+    top: 5%;
+    left: 25%;
 }
 
 .modal header {
