@@ -213,10 +213,12 @@
     cursor: pointer;
 }
 
-.modal header h2 {
-    font-size: 64px;
+.modal__title{
+    font-size: 3.5em;
     font-weight: normal;
-    text-align: center;
+    display: flex;
+    flex-direction: column;
+    line-height: 1;
 }
 
 form {
@@ -224,6 +226,7 @@ form {
     width: 100%;
     flex-direction: column;
     align-items: flex-start;
+    margin-top: 30px;
 }
 
 form label {
@@ -239,9 +242,70 @@ form div {
     margin-bottom: 26px;
 }
 
-form input {
+form input, #message{
+    font-size: 25px;
     width: 100%;
-    height: 68px;
+}
+form input {
+    height: 60px;
     border: none;
     border-radius: 5px;
+}
+#message{
+    resize: none;
+}
+
+/* lightbox */
+
+.lightbox{
+    display: none;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #FAFAFA;
+    justify-content: center;
+}
+
+.lightbox-content{
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+.lightbox-content h3{
+    color: #901C1C;
+}
+
+.move-right-lightbox, .move-left-lightbox, .close-lightbox{
+    color: #901C1C;
+    font-size: 50px;
+    position: absolute;
+}
+.move-right-lightbox, .move-left-lightbox{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+.close-lightbox{
+    top: 7%;
+    right: 20px;
+}
+.move-left-lightbox{
+    left: 20px;
+}
+.move-left-lightbox::before{
+    content: '<';
+}
+.move-right-lightbox{
+    right: 20px;
+}
+.move-right-lightbox::before{
+    content: '>';
+}
+
+.lightbox-content > img, .lightbox-content > video{
+    max-width: 80%;
+    height: 80%;
+    object-fit: cover;
 }
