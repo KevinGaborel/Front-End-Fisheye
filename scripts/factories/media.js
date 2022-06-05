@@ -1,3 +1,6 @@
+/* eslint-disable no-unused-vars */
+/*global closeLightboxModal*/
+
 function mediaFactory(data) {
     const { date, id, likes, photographerId, price, title, video, image, folderName } = data;
 
@@ -43,15 +46,15 @@ function mediaFactory(data) {
                 const key = e.key;
                 if(key === 'ArrowLeft'){
                     updateLightbox(medias, 'left');
-                };
+                }
                 if(key === 'ArrowRight'){
                     updateLightbox(medias, 'right');
-                };
+                }
                 if(key === 'Escape'){
                     lightboxElt.style.display === 'flex' && closeLightboxModal();
-                };
+                }
             });
-        };
+        }
 
         if (data.video){
             const videoElt = document.createElement('video');
@@ -113,7 +116,7 @@ function mediaFactory(data) {
         article.appendChild(divFooter);
 
         return (article);
-    };
+    }
 
     //retourne l'elt fixer en bas à droite, avec les infos (nb likes et prix par jour)
     function getInfoPhotographer(medias){
@@ -211,7 +214,7 @@ function mediaFactory(data) {
         titleLightbox.textContent = newMedia.title;
         
         lightboxContentElt.appendChild(titleLightbox);
-    };
+    }
 
     return { getMediaCardDOM, getInfoPhotographer, updateLightbox };
-};
+}

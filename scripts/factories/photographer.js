@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-vars */
+
 function photographerFactory(data) {
     const { name, portrait, id, city, country, price, tagline } = data;
 
@@ -50,7 +52,7 @@ function photographerFactory(data) {
         article.appendChild(paragraph);
 
         return (article);
-    };
+    }
 
 
     // retourne un objet avec deux elt de type node.
@@ -75,7 +77,7 @@ function photographerFactory(data) {
         paragraphContainer.appendChild(paragraph);
 
         return {paragraphContainer, img};
-    };
+    }
 
     return { name, picture, getUserCardDOM, getUserHeaderDOM }
 }

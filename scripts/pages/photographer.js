@@ -1,4 +1,8 @@
-//Mettre le code JavaScript lié à la page photographer.html
+//lié à la page photographer.html
+/* eslint-disable no-unused-vars */
+/* global photographerFactory */
+/* global mediaFactory */
+
 
 // récupère les data via fetch
 async function getPhotographers(id) {
@@ -70,7 +74,7 @@ async function displayData(photographer, medias) {
         mediaModel.updateLightbox(medias, 'right');
     });
 
-};
+}
 
 async function init() {
     // récupération de l'id du photographe, via une query string
@@ -121,7 +125,7 @@ async function init() {
 
             mediaContainerElt.appendChild(mediaCardDOM);
         });
-    };
+    }
 
     //event si on clic sur le btn pour trier, alors affiche les trois options (popularité, date, titre)
     btnOrderByElt.addEventListener('click', (e) => {
@@ -212,7 +216,7 @@ async function init() {
         getTri(e);
     });
 
-};
+}
 
 
 document.addEventListener('DOMContentLoaded', init);
