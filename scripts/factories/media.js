@@ -38,7 +38,7 @@ function mediaFactory(data) {
 
             lightboxElt.style.display = 'flex';
 
-            // event clavier
+            // event clavier pour changer d'image ou fermer la lightbox
             document.addEventListener('keydown', (e) => {
                 const key = e.key;
                 if(key === 'ArrowLeft'){
@@ -93,6 +93,7 @@ function mediaFactory(data) {
         spanFav.style.marginRight = '10px';
         spanFav.style.fontWeight = '600';
         
+        // add like au click
         divFav.addEventListener('click', () => {
             spanFav.textContent = likes + 1;
             updateInfoPhotographer();
@@ -114,14 +115,18 @@ function mediaFactory(data) {
         return (article);
     };
 
+    //retourne l'elt fixer en bas à droite, avec les infos (nb likes et prix par jour)
     function getInfoPhotographer(medias){
 
         const bottomInfoElt = document.createElement('div');
         bottomInfoElt.classList.add('price-photograph');
 
         const divElt = document.createElement('div');
+
+        //on copie les valeurs likes dans un tableau, qu'ensuite on additionne les likes avec reduce
         const nbLikes = medias.map(media => media.likes).reduce((x, y) => x + y);
         divElt.textContent = nbLikes;
+
         const iconeFav = document.createElement('i');
         iconeFav.classList.add('fa-solid', 'fa-heart');
         iconeFav.setAttribute('aria-label', 'likes');
@@ -136,9 +141,11 @@ function mediaFactory(data) {
         return bottomInfoElt;
     }
 
+    //modifie les infos de l'elt fixer en bas à droite lors d'un vote
     function updateInfoPhotographer(){
         const likeElt = document.querySelectorAll('.article-footer span');
 
+        //récupère les valeurs des différents médias, qu'on additionne
         let result = 0;
         for (let nbLikes of likeElt){
             result = result + parseInt(nbLikes.textContent);
@@ -155,25 +162,31 @@ function mediaFactory(data) {
 
     }
 
+    //modifie la lightbox lors de l'event clavier ou au clic
     function updateLightbox(medias, direction){
         const lightboxElt = document.querySelector('.lightbox');
         const lightboxContentElt = lightboxElt.querySelector('.lightbox-content');
         
         const isVideoElt = lightboxContentElt.querySelector('video');
         const isImageElt = lightboxContentElt.querySelector('img');
+
+        //si c'est une video, on prend le dataset.id, sinon on prend celle de l'image
         const idMedia = isVideoElt ? isVideoElt.dataset.id : isImageElt.dataset.id;
         
         let newId, newMedia;
 
         if (direction === 'left'){
+            //on cherche la position du media actuel (l'index), puis on prend la valeur, moins 1.
             newId = medias.findIndex(obj => obj.id === parseInt(idMedia)) - 1;
-            newMedia = newId === -1 || newId === -2 ? medias[medias.length - 1] : medias[newId];
+            //si l'index est égale ou inférieur à -1 on prend la dernière valeur (le dernier media) du tableau, sinon on prend le media à l'index incrémenté
+            newMedia = newId <= -1 ? medias[medias.length - 1] : medias[newId];
         } else{
             newId = medias.findIndex(obj => obj.id === parseInt(idMedia)) + 1;
+            //si l'index est égale à la longueur du tableau, alors on repart à l'index 0, sinon on met la valeur incrémenté
             newMedia = newId === medias.length ? medias[0] : medias[newId];
         }
         
-        //clean all child
+        //clean child et le h3
         isVideoElt ? lightboxContentElt.removeChild(isVideoElt) : lightboxContentElt.removeChild(isImageElt);
         lightboxContentElt.removeChild(lightboxElt.querySelector('h3'));
 

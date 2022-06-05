@@ -3,6 +3,8 @@ function photographerFactory(data) {
 
     const picture = `assets/photographers/${portrait}`;
 
+    // va creer un elt article, ainsi qu'une succession d'autres elt, comme le lien vers la page d'un photographe
+    // utilise picture, name, country, tagline, price, id et city
     function getUserCardDOM() {
         const article = document.createElement( 'article' );
 
@@ -14,6 +16,7 @@ function photographerFactory(data) {
         h2.textContent = name;
 
         const link = document.createElement('a');
+        // création du lien pour acceder à la page du photographe
         link.setAttribute('href', `/photographer?id=${id}`);
         link.setAttribute('aria-label', name);
 
@@ -49,6 +52,8 @@ function photographerFactory(data) {
         return (article);
     };
 
+
+    // retourne un objet avec deux elt de type node.
     function getUserHeaderDOM() {
         const paragraphContainer = document.createElement('div');
 

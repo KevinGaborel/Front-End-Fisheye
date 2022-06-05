@@ -102,6 +102,10 @@
     list-style: none;
     padding: 0;
 }
+#listbox1:focus, #listbox2:focus, #listbox3:focus{
+    background-color: #D3573C;
+    color: black;
+}
 #order-list li{
     height: 3em;
     display: flex;
@@ -118,10 +122,12 @@
 #order-list li:nth-child(1) > span{
     transform: rotateZ(-90deg);
 }
+
 #order-list li:hover{
     color: black;
     background-color: #D3573C;
 }
+
 .order-list__border::after{
     content: '';
     width: calc(100% - 20px);
