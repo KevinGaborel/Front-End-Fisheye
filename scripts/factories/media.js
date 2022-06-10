@@ -14,11 +14,13 @@ function mediaFactory(data) {
             e.preventDefault();
             const lightboxElt = document.querySelector('.lightbox');
             const lightboxContentElt = lightboxElt.querySelector('.lightbox-content');
+            lightboxContentElt.setAttribute('aria-label', 'image closeup view');
             lightboxContentElt.focus();
 
             if (data.video){
                 const videoLightbox = document.createElement('video');
                 videoLightbox.setAttribute("src", `/assets/photographers/${folderName}/${video}`);
+                videoLightbox.setAttribute('alt', title);
                 videoLightbox.setAttribute('controls', true);
 
                 videoLightbox.dataset.id = data.id;
@@ -59,6 +61,8 @@ function mediaFactory(data) {
         if (data.video){
             const videoElt = document.createElement('video');
             videoElt.setAttribute('src', `/assets/photographers/${folderName}/${video}`);
+            videoElt.setAttribute("alt", `${title}, closeup view`);
+
             videoElt.classList.add('media');
 
             const link = document.createElement('a');
@@ -73,7 +77,7 @@ function mediaFactory(data) {
             const imgElt = document.createElement('img');
             imgElt.classList.add('media');
             imgElt.setAttribute("src", `/assets/photographers/${folderName}/${image}`);
-            imgElt.setAttribute("alt", title);
+            imgElt.setAttribute("alt", `${title}, closeup view`);
 
             const link = document.createElement('a');
             link.addEventListener('click', getLightbox);

@@ -287,7 +287,7 @@ form input {
 
 .move-right-lightbox, .move-left-lightbox, .close-lightbox{
     color: #901C1C;
-    font-size: 50px;
+    font-size: 4rem;
     position: absolute;
 }
 .move-right-lightbox, .move-left-lightbox{

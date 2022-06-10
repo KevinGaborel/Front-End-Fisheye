@@ -1,10 +1,12 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
   <head>
-    <link href="css/style.css" rel="stylesheet" type="text/css" />
     <meta charset="utf-8">
-    <link rel="icon" type="image/png" href="assets/favicon.png">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet" type="text/css" />
+    <link rel="icon" type="image/png" href="assets/images/logo.png">
     <title>Fisheye - photographe </title>
   </head>
   <body>
@@ -39,24 +41,24 @@
 
     </main>
 
-    <div id="contact_modal" aria-labelledby="Contact Me">
+    <div id="contact_modal" aria-label="Contact Me" aria-labelledby="modal__title">
 			<div class="modal">
 				<header>
           <h2 class="modal__title">Contactez-moi</h2>
-          <img src="assets/icons/close.svg" onclick="closeModal()" aria-label="close modal"/>
+          <img src="assets/icons/close.svg" onclick="closeModal()" aria-label="Close Contact form" alt=""/>
         </header>
 				<form action="post">
 					<div>
-						<label for="first-name">Prénom</label>
-            <input type="text" name="first-name" id="first-name" aria-labelledby="first-name" required>
-            <label for="last-name">Nom</label>
-            <input type="text" name="last-name" id="last-name"  aria-labelledby="last-name" required>
-            <label for="mail">Email</label>
-            <input type="email" name="mail" id="mail" aria-labelledby="mail" required>
-            <label for="message">Votre message</label>
-            <textarea name="message" id="message" cols="30" rows="7" aria-labelledby="message" required></textarea>
+						<label for="first-name" id="label-first-name">Prénom</label>
+            <input type="text" name="first-name" id="first-name" aria-labelledby="label-first-name" required>
+            <label for="last-name" id="label-last-name">Nom</label>
+            <input type="text" name="last-name" id="last-name"  aria-labelledby="label-last-name" required>
+            <label for="mail" id="label-email">Email</label>
+            <input type="email" name="mail" id="mail" aria-labelledby="label-email" required>
+            <label for="message" id="label-message">Votre message</label>
+            <textarea name="message" id="message" cols="30" rows="7" aria-labelledby="label-message" required></textarea>
 					</div>
-          <button class="contact_button">Envoyer</button>
+          <button class="contact_button" aria-label="Send">Envoyer</button>
 				</form>
 			</div>
 		</div>
@@ -64,8 +66,8 @@
     <div class="lightbox">
       <div class="lightbox-content">
         <i class="fa-solid fa-xmark close-lightbox" onclick="closeLightboxModal()" aria-label="close lightbox modal"></i>
-        <i class="move-left-lightbox"></i>
-        <i class="move-right-lightbox"></i>
+        <i class="move-left-lightbox" aria-label="Previous image"></i>
+        <i class="move-right-lightbox" aria-label="Next image"></i>
       </div>
     </div>
 
